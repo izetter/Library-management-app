@@ -1,0 +1,33 @@
+
+body {
+    font: 1em Helvetica, Arial, sans-serif;
+}
+
+thead {
+    /* border: 1px solid #000; */
+    /* border-bottom: 3px solid #000000; */
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+th {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button {
+    color: white;
+    background-color: #0f879c;
+    padding: 4px 6px;
+    border: none;
+    margin: 1% 0;
+    font: 1em Helvetica, Arial, sans-serif; 
+}
+
+button:hover {
+    color: white;
+    background-color: #69d0e2;
+    cursor: pointer;
+    font: 1em Helvetica, Arial, sans-serif; 
+}
