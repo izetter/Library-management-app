@@ -33,7 +33,33 @@
         echo "0 results";
         }
 
+        echo "<br>";
 
+        $sql = "SELECT * FROM authors";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            echo "<h2>Authors table</h2>";
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "Author ID: " . $row["author_id"] . " - Author Last Name: " . $row["author_last_name"] . " - Author First Name: " . $row["author_first_name"] . "<br>";
+            }
+        } else {
+        echo "0 results";
+        }
+
+        echo "<br>";
+
+        $sql = "SELECT * FROM keywords";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            echo "<h2>Keywords table</h2>";
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "Keyword ID: " . $row["keyword_id"] . " - Keyword: " . $row["keyword"] . "<br>";
+            }
+        } else {
+        echo "0 results";
+        }
         
         $conn->close();
     ?>
