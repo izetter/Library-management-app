@@ -24,7 +24,7 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             echo "<h2>Books table</h2>";
-            $table = "<table border='2px'>";
+            $table = "<table>";
             $table .= "<thead><tr><th>ISBN</th><th>Title</th><th>Publisher</th><th>Year</th><th>Dewey code</th><th>Current inventory</th><th>Total inventory</th></tr></thead>";
             $table .= "<tbody>";
             while($row = $result->fetch_assoc()) {
@@ -43,7 +43,7 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             echo "<h2>Authors table</h2>";
-            $table = "<table border='2px'>";
+            $table = "<table>";
             $table .= "<thead><tr><th>Author ID</th><th>Last Name</th><th>First Name</th></tr></thead>";
             $table .= "<tbody>";
             while($row = $result->fetch_assoc()) {
@@ -62,7 +62,7 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             echo "<h2>Keywords table</h2>";
-            $table = "<table border='2px'>";
+            $table = "<table>";
             $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
             $table .= "<tbody>";
             // output data of each row
