@@ -23,7 +23,7 @@
         $sql = "SELECT * FROM books";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            echo "<h2>Books table</h2>";
+            echo "<h2>Books</h2>";
             $table = "<table>";
             $table .= "<thead><tr><th>ISBN</th><th>Title</th><th>Publisher</th><th>Year</th><th>Dewey code</th><th>Current inventory</th><th>Total inventory</th></tr></thead>";
             $table .= "<tbody>";
@@ -42,7 +42,7 @@
         $sql = "SELECT * FROM authors";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            echo "<h2>Authors table</h2>";
+            echo "<h2>Authors</h2>";
             $table = "<table>";
             $table .= "<thead><tr><th>Author ID</th><th>Last Name</th><th>First Name</th></tr></thead>";
             $table .= "<tbody>";
@@ -61,7 +61,7 @@
         $sql = "SELECT * FROM keywords";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            echo "<h2>Keywords table</h2>";
+            echo "<h2>Keywords</h2>";
             $table = "<table>";
             $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
             $table .= "<tbody>";
