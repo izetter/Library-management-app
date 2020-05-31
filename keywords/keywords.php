@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <a href="../index.php">Home</a>
+    <a href="../index.php">HOME</a>
     <a href="../index.php">&#8592; back</a><br>
 
     <?php
@@ -28,7 +28,7 @@
         if ($result->num_rows > 0) {
             echo "<h2>Keywords</h2>";
             echo "<a href='mod_keywords.php'>Modify entries</a>";
-            echo "<a href='#'>Add entries</a>";
+            echo "<a href='add_keywords.php'>Add entries</a>";
             echo "<a href='del_keywords.php'>Delete entries</a>";
             $table = "<table>";
             $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";

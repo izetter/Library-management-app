@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <a href="../index.php">Home</a>
+    <a href="../index.php">HOME</a>
+    <a href="keywords.php">KEYWORDS</a>
     <a href='keywords.php'>&#8592; back</a>
     <?php
         $servername = "localhost";  // IP address or DNS name somehow

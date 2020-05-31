@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modify Keyword entries</title>
+    <title>Delete Keyword entries</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <a href="../index.php">Home</a>
+    <a href="../index.php">HOME</a>
+    <a href="keywords.php">KEYWORDS</a>
     <a href='keywords.php'>&#8592; back</a>
     <?php
         $servername = "localhost";  // IP address or DNS name somehow

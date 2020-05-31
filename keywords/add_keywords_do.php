@@ -9,7 +9,7 @@
 <body>
 <a href="../index.php">HOME</a>
 <a href="keywords.php">KEYWORDS</a>
-<a href="mod_keywords.php">&#8592; back</a><br>
+<a href="add_keywords.php">&#8592; back</a><br>
 
     <?php
         $servername = "localhost";  // IP address or DNS name somehow
@@ -28,11 +28,10 @@
         $wordId = $_POST['id'];
         $word = $_POST['keyword'];
 
-        $sql = "UPDATE keywords SET keyword = '$word' WHERE keyword_id = $wordId";
+        $sql = "INSERT INTO keywords VALUE($wordId, '$word')";
 
         if (mysqli_query($conn, $sql)) {
-            echo "<p>Record updated successfully.<p>";
-            echo "<p>Updated record in the <b>KEYWORDS TABLE</b> now looks like this:</p>";
+            echo "<p>Succesfully added the following record in the <b>KEYWORDS TABLE.</b></p>";
 
             $showthis = "SELECT * FROM keywords WHERE keyword_id = $wordId";
             $result = $conn->query($showthis);
