@@ -8,7 +8,7 @@
 </head>
 <body>
 <a href="../index.php">Home</a>
-<a href="mod_keywords.php">&#8592; back</a><br>
+<a href="del_keywords.php">&#8592; back</a><br>
 
     <?php
         $servername = "localhost";  // IP address or DNS name somehow
@@ -27,29 +27,22 @@
         $wordId = $_POST['id'];
         $word = $_POST['keyword'];
 
-        $sql = "UPDATE keywords SET keyword = '$word' WHERE keyword_id = $wordId";
+        $sql = "DELETE FROM keywords WHERE keyword_id = $wordId";
 
         if (mysqli_query($conn, $sql)) {
-            echo "<p>Record updated successfully.<p>";
-            echo "<p>Updated record in the <b>KEYWORDS TABLE</b> now looks like this:</p>";
+            echo "<p>Record deleted successfully.<p>";
+            echo "<p>The following record was <strong>DELETED</strong> from the <b>KEYWORDS TABLE.</b></p>";
 
-            $showthis = "SELECT * FROM keywords WHERE keyword_id = $wordId";
-            $result = $conn->query($showthis);
-            if ($result->num_rows > 0) {
-                $table = "<table>";
-                $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
-                $table .= "<tbody>";
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                    $table .= "<tr><td>{$row["keyword_id"]}</td><td>{$row["keyword"]}</td></tr>";
-                }
-                $table .= "</tbody>";
-                $table .= "</table>";
-                echo $table;
-            }
+            $table = "<table class='deleted-entry'>";
+            $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
+            $table .= "<tbody>";
+            $table .= "<tr><td>{$wordId}</td><td>{$word}</td></tr>";
+            $table .= "</tbody>";
+            $table .= "</table>";
+            echo $table;
 
         } else {
-            echo "Error updating record: " . mysqli_error($conn);
+            echo "Error deleting record: " . mysqli_error($conn);
         }
     
         $conn->close();

@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keywords</title>
+    <title>Modify Keyword entries</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <a href="../index.php">Home</a>
-    <a href="../index.php">&#8592; back</a><br>
-
+    <a href='keywords.php'>&#8592; back</a>
     <?php
         $servername = "localhost";  // IP address or DNS name somehow
         $username = "root";
@@ -27,15 +26,12 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             echo "<h2>Keywords</h2>";
-            echo "<a href='mod_keywords.php'>Modify entries</a>";
-            echo "<a href='#'>Add entries</a>";
-            echo "<a href='del_keywords.php'>Delete entries</a>";
             $table = "<table>";
-            $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
+            $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th><th></th></tr></thead>";
             $table .= "<tbody>";
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                $table .= "<tr><td>{$row["keyword_id"]}</td><td>{$row["keyword"]}</td></tr>";
+                $table .= "<tr><form action='del_keywords_do.php' method='post'><td><input class='read-only' name='id' value='{$row["keyword_id"]}' readonly></td><td><input class='read-only' name='keyword' value='{$row["keyword"]}' readonly></td><td><input type='submit' value='Delete'></td></form></tr>";
             }
             $table .= "</tbody>";
             $table .= "</table>";
