@@ -31,15 +31,22 @@
 
         if (mysqli_query($conn, $sql)) {
             echo "<p>Record updated successfully.<p>";
-            echo "Updated record in the KEYWORDS TABLE now looks like this:";
+            echo "<p>Updated record in the <b>KEYWORDS TABLE</b> now looks like this:</p>";
 
-            $table = "<table>";
-            $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
-            $table .= "<tbody>";
-            $table .= "<tr><td>{$wordId}</td><td>{$word}</td></tr>";
-            $table .= "</tbody>";
-            $table .= "</table>";
-            echo $table;
+            $showthis = "SELECT * FROM keywords WHERE keyword_id = $wordId";
+            $result = $conn->query($showthis);
+            if ($result->num_rows > 0) {
+                $table = "<table>";
+                $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
+                $table .= "<tbody>";
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    $table .= "<tr><td>{$row["keyword_id"]}</td><td>{$row["keyword"]}</td></tr>";
+                }
+                $table .= "</tbody>";
+                $table .= "</table>";
+                echo $table;
+            }
 
         } else {
             echo "Error updating record: " . mysqli_error($conn);
@@ -50,3 +57,16 @@
     
 </body>
 </html>
+
+
+<!-- 
+
+            $table = "<table>";
+            $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
+            $table .= "<tbody>";
+            $table .= "<tr><td>{$wordId}</td><td>{$word}</td></tr>";
+            $table .= "</tbody>";
+            $table .= "</table>";
+            echo $table;
+
+ -->

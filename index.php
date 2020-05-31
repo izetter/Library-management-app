@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <p>Escoge una opción</p>
+    <p>Select the table to manage:</p>
     <a href="authors.php">Authors</a>
     <a href="books.php">Books</a>
     <a href="/keywords/keywords.php">Keywords</a>
