@@ -17,7 +17,7 @@
         $password = "";
         $database = "library";
         // Create connection
-        $conn = new mysqli($servername, $username, $password, $database);   // This is a constructor, they can also be specidief directly as a string rather than using a variable!
+        $conn = new mysqli($servername, $username, $password, $database);   // This is a constructor, they can also be specified directly as a string rather than using a variable!
         // Check connection
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);

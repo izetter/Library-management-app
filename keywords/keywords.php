@@ -14,8 +14,9 @@
         $servername = "localhost";  // IP address or DNS name somehow
         $username = "root";
         $password = "";
+        $database = "library";
         // Create connection
-        $conn = new mysqli($servername, $username, $password, "library");   // This is a constructor, the fourth parameter is the database to use
+        $conn = new mysqli($servername, $username, $password, $database);   // This is a constructor, they can also be specified directly as a string rather than using a variable!
         // Check connection
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
