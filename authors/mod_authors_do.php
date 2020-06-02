@@ -8,8 +8,8 @@
 </head>
 <body>
 <a href="../index.php">HOME</a>
-<a href="keywords.php">KEYWORDS</a>
-<a href="add_keywords.php">&#8592; back</a><br>
+<a href="authors.php">AUTHORS</a>
+<a href="mod_authors.php">&#8592; back</a><br>
 
     <?php
         $servername = "localhost";  // IP address or DNS name somehow
@@ -25,23 +25,25 @@
         }
         // echo "Connected successfully";
 
-        $wordId = $_POST['id'];
-        $word = $_POST['keyword'];
+        $id = $_POST['id'];
+        $lastName = $_POST['last-name'];
+        $firstName = $_POST['first-name'];
 
-        $sql = "INSERT INTO keywords VALUE($wordId, '$word')";
+        $sql = "UPDATE authors SET author_last_name = '$lastName', author_first_name = '$firstName' WHERE author_id = $id";
 
         if (mysqli_query($conn, $sql)) {
-            echo "<p>Succesfully added the following record to the <b>KEYWORDS TABLE.</b></p>";
+            echo "<p>Record updated successfully.<p>";
+            echo "<p>Updated record in the <b>KEYWORDS TABLE</b> now looks like this:</p>";
 
-            $showthis = "SELECT * FROM keywords WHERE keyword_id = $wordId";
+            $showthis = "SELECT * FROM authors WHERE author_id = $id";
             $result = $conn->query($showthis);
             if ($result->num_rows > 0) {
                 $table = "<table>";
-                $table .= "<thead><tr><th>Keyword ID</th><th>Keyword</th></tr></thead>";
+                $table .= "<thead><tr><th>Author ID</th><th>Author last name</th><th>Author first name</th></tr></thead>";
                 $table .= "<tbody>";
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    $table .= "<tr><td>{$row["keyword_id"]}</td><td>{$row["keyword"]}</td></tr>";
+                    $table .= "<tr><td>$row[author_id]</td><td>$row[author_last_name]</td><td>$row[author_first_name]</td></tr>";
                 }
                 $table .= "</tbody>";
                 $table .= "</table>";

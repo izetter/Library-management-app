@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authors</title>
+    <title>Modify Author entries</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <a href="../index.php">HOME</a>
-    <a href="../index.php">&#8592; back</a><br>
-
+    <a href="authors.php">AUTHORS</a>
+    <a href='authors.php'>&#8592; back</a>
     <?php
         $servername = "localhost";  // IP address or DNS name somehow
         $username = "root";
@@ -28,14 +28,12 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             echo "<h2>Authors</h2>";
-            echo "<a href='mod_authors.php'>Modify entries</a>";
-            echo "<a href='add_authors.php'>Add entries</a>";
-            echo "<a href='del_authors.php'>Delete entries</a>";
             $table = "<table>";
-            $table .= "<thead><tr><th>Author ID</th><th>Last Name</th><th>First Name</th></tr></thead>";
+            $table .= "<thead><tr><th>Author ID</th><th>Author last name</th><th>Author first name</th><th></th></tr></thead>";
             $table .= "<tbody>";
+            // output data of each row
             while($row = $result->fetch_assoc()) {
-                $table .= "<tr><td>$row[author_id]</td><td>$row[author_last_name]</td><td>$row[author_first_name]</td></tr>";
+                $table .= "<tr><form action='mod_authors_do.php' method='post'><td><input class='read-only' name='id' value='{$row["author_id"]}' readonly></td><td><input name='last-name' value='{$row["author_last_name"]}'></td><td><input name='first-name' value='{$row["author_first_name"]}'></td><td><input type='submit'></td></form></tr>";
             }
             $table .= "</tbody>";
             $table .= "</table>";
@@ -43,7 +41,7 @@
         } else {
             echo "0 results";
         }
-
+    
         $conn->close();
     ?>
 </body>
