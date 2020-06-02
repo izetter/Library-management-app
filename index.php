@@ -9,8 +9,8 @@
 <body>
     <p>Select the table to manage:</p>
     <a href="/authors/authors.php">Authors</a>
-    <a href="books.php">Books</a>
+    <a href="/books/books.php">Books</a>
     <a href="/keywords/keywords.php">Keywords</a>
-    <a href="users.php">Users</a>
+    <a href="/users/users.php">Users</a>
 </body>
 </html>
