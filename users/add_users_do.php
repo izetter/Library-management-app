@@ -8,8 +8,8 @@
 </head>
 <body>
 <a href="../index.php">HOME</a>
-<a href="books.php">BOOKS</a>
-<a href="add_books.php">&#8592; back</a><br>
+<a href="users.php">USERS</a>
+<a href="add_users.php">&#8592; back</a><br>
 
     <?php
         $servername = "localhost";  // IP address or DNS name somehow
@@ -25,28 +25,29 @@
         }
         // echo "Connected successfully";
 
-        $id = $_POST['isbn'];
-        $title = $_POST['title'];
-        $publisher = $_POST['publisher'];
-        $year = $_POST['year'];
-        $dewey = $_POST['dewey'];
-        $currentInv = $_POST['current-inv'];
-        $totalInv = $_POST['total-inv'];
+        $id = $_POST['id'];
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+        $lastName = $_POST['last-name'];
+        $firstName = $_POST['first-name'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $userType = $_POST['user-type'];
 
-        $sql = "INSERT INTO books VALUE($id, '$title', '$publisher', $year, '$dewey', $currentInv, $totalInv)";
+        $sql = "INSERT INTO users VALUE($id, '$email', '$pass', '$lastName', '$firstName', '$phone', '$address', '$userType')";
 
         if (mysqli_query($conn, $sql)) {
-            echo "<p>Succesfully added the following record to the <b>BOOKS TABLE.</b></p>";
+            echo "<p>Succesfully added the following record to the <b>USERS TABLE.</b></p>";
 
-            $showthis = "SELECT * FROM books WHERE ISBN = $id";
+            $showthis = "SELECT * FROM users WHERE user_id = $id";
             $result = $conn->query($showthis);
             if ($result->num_rows > 0) {
                 $table = "<table>";
-                $table .= "<thead><tr><th>ISBN</th><th>Title</th><th>Publisher</th><th>Year</th><th>Dewey code</th><th>Current inventory</th><th>Total inventory</th></tr></thead>";
+                $table .= "<thead><tr><th>User ID</th><th>email</th><th>Password</th><th>Last name</th><th>First name</th><th>Phone</th><th>Address</th><th>User type</th></tr></thead>";
                 $table .= "<tbody>";
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    $table .= "<tr><td>{$row['ISBN']}</td><td>{$row["title"]}<td>{$row["publisher"]}</td><td>{$row["year"]}</td><td>{$row["dewey_code"]}</td><td>{$row["current_inventory"]}</td><td>{$row["total_inventory"]}</td></tr>";
+                    $table .= "<tr><td>{$row["user_id"]}</td><td>{$row["email"]}</td><td>{$row["password"]}</td><td>{$row["user_last_name"]}</td><td>{$row["user_first_name"]}</td><td>{$row["phone"]}</td><td>{$row["address"]}</td><td>{$row["user_type"]}</td></tr>";
                 }
                 $table .= "</tbody>";
                 $table .= "</table>";
